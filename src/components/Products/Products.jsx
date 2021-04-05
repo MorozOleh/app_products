@@ -52,6 +52,7 @@ export function Products() {
           size={product.size}
           color={product.color}
           id={product.id}
+          isParam={match.params.id}
           description={product.description}
         />
       ))}

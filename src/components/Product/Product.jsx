@@ -19,7 +19,8 @@ export function Product({
   weight,
   size,
   color,
-  description
+  description,
+  isParam
 }) {
   const classes = useStyles();
   const match = useRouteMatch();
@@ -58,15 +59,17 @@ export function Product({
             {`Weight: ${weight} g`}
           </Typography>
           <div className={classes.btn}>
-            <Button
-              variant="contained"
-              color="secondary"
-              component={Link}
-              to={`${match.url}/${id}`}
-              onClick={() => dispatch(getProduct(id))}
-            >
-              Comments
-            </Button>
+            {!isParam &&
+              <Button
+                variant="contained"
+                color="secondary"
+                component={Link}
+                to={`${match.url}/${id}`}
+                onClick={() => dispatch(getProduct(id))}
+              >
+                Comments
+              </Button>
+            }
             <Button
               variant="contained"
               color="secondary"
