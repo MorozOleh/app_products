@@ -3,7 +3,7 @@ import { FETCH_PRODUCTS, GET_PRODUCT, FIND_PRODUCTS } from '../types';
 const initialState = {
   fetchedProducts: [],
   cachesProducts: []
-}
+};
 
 export const productsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,4 +33,4 @@ export const productsReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

@@ -2,7 +2,7 @@ import React from 'react';
 import { useStyles } from './ProductStyle';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getProduct } from '../../redux/actions/actionCreator'
+import { getProduct, showModal } from '../../redux/actions/actionCreator'
 import { Modal } from '../Modal';
 
 import Card from '@material-ui/core/Card';
@@ -19,10 +19,16 @@ export function Product({
   weight,
   size,
   color,
+  description
 }) {
   const classes = useStyles();
   const match = useRouteMatch();
   const dispatch = useDispatch();
+
+  const handleEditButton = () => {
+    dispatch(getProduct(id));
+    dispatch(showModal())
+  }
 
   return (
     <>
@@ -35,6 +41,9 @@ export function Product({
         <CardContent>
           <Typography gutterBottom variant="h4" component="h2">
             {name}
+          </Typography>
+          <Typography color="textSecondary" component="p">
+            {`Description: ${description}`}
           </Typography>
           <Typography color="textSecondary" component="p">
             {`Quantity: ${count}`}
@@ -58,10 +67,19 @@ export function Product({
             >
               Comments
             </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to={`${match.url}/${id}?_edit=product`}
+              onClick={handleEditButton}
+            >
+              Edit card
+            </Button>
           </div>
         </CardContent>
       </Card>
       <Modal />
     </>
   );
-}
+};

@@ -20,4 +20,4 @@ export function Loader() {
       <LinearProgress color="secondary" />
     </div>
   );
-}
+};

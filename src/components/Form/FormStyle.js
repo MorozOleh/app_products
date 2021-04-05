@@ -2,8 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    background: 'white',
-    padding: 50,
+    backgroundImage: 'linear-gradient(to right top, #337ae5, #00a7ff, #00c9dc, #00e188, #a8eb12)',
+    padding: 15,
     borderRadius: 15,
 
     '& .MuiTextField-root': {
@@ -11,8 +11,10 @@ export const useStyles = makeStyles((theme) => ({
       width: 500,
     },
   },
-  button: {
+  btn: {
     display: 'flex',
-    margin: '0 auto'
-  }
+    justifyContent: "center",
+    marginTop: 20,
+    gap: 20
+  },
 }));

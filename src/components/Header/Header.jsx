@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link} from 'react-router-dom';
-import 'bulma';
 import { useDispatch } from 'react-redux';
 import { fetchProducts } from '../../redux/actions/actionCreator';
+
+import 'bulma';
 
 export function Header() {
   const dispatch = useDispatch();
   
   return (
-    <nav className="navbar" style={{background: 'red'}}>
+    <nav className="navbar" style={{ background: 'red' }}>
       <div className="navbar-brand" is-tab="true">
         <Link
           to="/"
@@ -25,6 +26,5 @@ export function Header() {
         </Link>
       </div>
     </nav>
-
-  )
-}
+  );
+};

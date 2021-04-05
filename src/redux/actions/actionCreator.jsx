@@ -7,7 +7,7 @@ import {
   SHOW_MODAL,
   FIND_PRODUCTS
 } from '../types';
-import { putComment, requestProducts } from '../../API/api';
+import { putProduct, requestProducts } from '../../API/api';
 
 export const fetchProducts = () => {
   return async dispatch => {
@@ -35,12 +35,12 @@ export const showModal = () => ({
   type: SHOW_MODAL
 });
 
-export const updateComment = (data) => {
+export const updateProduct = (data) => {
   const { id } = data;
   return async dispatch => {
     dispatch({ type: SHOW_LOADING });
 
-    await putComment(id, data);
+    await putProduct(id, data);
 
     const response = await requestProducts();
 
@@ -55,9 +55,8 @@ export const updateComment = (data) => {
     });
 
     dispatch({ type: HIDE_LOADING });
-
   }
-}
+};
 
 export const findProducts = (query) => ({
   type: FIND_PRODUCTS,

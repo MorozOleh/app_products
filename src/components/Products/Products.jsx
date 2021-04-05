@@ -8,25 +8,25 @@ import { Loader } from '../Loader';
 import { findProducts } from '../../redux/actions/actionCreator';
 import { Comment } from '../Comment';
 
-
-
 export function Products() {
   const [name, setName] = useState('');
+  const match = useRouteMatch('/product/:id?');
+
   const classes = useStyles();
   const dispatch = useDispatch();
+
   const products = useSelector(getProducts);
-  const match = useRouteMatch('/product/:id?');
   const isLoading = useSelector(
     state => state.loading.isLoading
   );
+
   const handleQuery = (event) => {
     const lowerQuery = name.toLowerCase();
 
     setName(event.target.value);
     dispatch(findProducts(lowerQuery));
-  }
+  };
 
-  console.log(products)
   if (isLoading) {
     return <Loader />
   };
@@ -52,7 +52,7 @@ export function Products() {
           size={product.size}
           color={product.color}
           id={product.id}
-          mat={match.params.id}
+          description={product.description}
         />
       ))}
       </div>

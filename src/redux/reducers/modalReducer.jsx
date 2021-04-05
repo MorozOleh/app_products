@@ -2,7 +2,7 @@ import { SHOW_MODAL, HIDE_MODAL } from '../types';
 
 const initialState = {
   isOpenModal: false
-}
+};
 
 export const modalReducer = (state = initialState, action) => {
   switch (action.type) {

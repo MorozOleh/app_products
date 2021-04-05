@@ -9,7 +9,7 @@ export const requestProducts = async() => {
   return data;
 }
 
-export const putComment = async (id, da) => {
+export const putProduct = async (id, da) => {
   const response = await axios.put(`${BASE_URL}/${id}`, da);
   const { data } = response;
 

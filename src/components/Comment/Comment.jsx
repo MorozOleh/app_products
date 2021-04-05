@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { useStyles } from './CommentStyle';
 import { useDispatch, useSelector} from 'react-redux';
-import { showModal } from '../../redux/actions/actionCreator'
+import { showModal } from '../../redux/actions/actionCreator';
 import { Link } from 'react-router-dom';
-import { getProducts } from '../../redux/selectors/selectors'
-import { updateComment } from '../../redux/actions/actionCreator';
+import { getProducts } from '../../redux/selectors/selectors';
+import { updateProduct } from '../../redux/actions/actionCreator';
 
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -24,46 +24,46 @@ export function Comment({match, comments, id}) {
       )
     };
 
-    dispatch(updateComment(deleteComment));
+    dispatch(updateProduct(deleteComment));
   }
 
   return (
     <>
-    <div className={classes.comments}>
-      <Card >
-        {comments.map(comment => (
-          <CardContent key={comment.id}>
-            <div className={classes.wrapper}>
-            <Typography
-              gutterBottom
-              variant="h4"
-              component="p"
-            >
-              {comment.description}
-            </Typography>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => handleDelete(comment.id)}
-            >
-                DELETE
-            </Button>
+      <div className={classes.comments}>
+        <Card >
+          {comments.map(comment => (
+            <CardContent key={comment.id}>
+              <div className={classes.wrapper}>
+                <Typography
+                  gutterBottom
+                  variant="h4"
+                  component="p"
+                >
+                  {comment.description}
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => handleDelete(comment.id)}
+                >
+                  DELETE
+                </Button>
               </div>
-          </CardContent>
-        ))}
-      </Card>
-    </div>
+            </CardContent>
+          ))}
+        </Card>
+      </div>
       <div className={classes.btn}>
         <Button
-        variant="contained"
+          variant="contained"
           color="secondary"
           component={Link}
           to={`${match.url}/${id}?_edit=comment`}
           onClick={() => dispatch(showModal())}
-         >
-            Add comments
+        >
+          Add comments
         </Button>
       </div>
     </>
-  )
-}
+  );
+};

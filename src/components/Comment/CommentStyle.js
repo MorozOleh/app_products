@@ -20,5 +20,4 @@ export const useStyles = makeStyles({
     borderRadius: 5,
     padding: 10
   }
-
 });
