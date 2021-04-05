@@ -9,7 +9,7 @@ export function Header() {
   const dispatch = useDispatch();
   
   return (
-    <nav className="navbar" style={{ background: 'red' }}>
+    <nav className="navbar" style={{ background: '#01FF70'}}>
       <div className="navbar-brand" is-tab="true">
         <Link
           to="/"
