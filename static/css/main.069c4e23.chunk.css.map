@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.scss"],"names":[],"mappings":"AAAA,KACE,YAAa,CACd,YAGC,qBAAwB,CACxB,iBAAkB,CAClB,iBAAkB,CAClB,cAAe","file":"main.069c4e23.chunk.css","sourcesContent":[".App {\n  height: 100vh;\n}\n\n.App__title {\n  background-color: yellow;\n  text-align: center;\n  line-height: 100vh;\n  font-size: 50px;\n}\n"]}
