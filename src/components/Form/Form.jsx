@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory, useRouteMatch } from "react-router-dom";
 import { useStyles } from "./FormStyle";
-import { getProducts } from "../../redux/selectors/selectors"
+import { getProduct } from "../../redux/selectors/selectors"
 import { updateProduct, hideModal } from "../../redux/actions/actionCreator";
 import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
@@ -11,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 export function Form() {
-  const product = useSelector(getProducts)[0];
+  const product = useSelector(getProduct);
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [color, setColor] = useState(product.color);
@@ -73,7 +73,7 @@ export function Form() {
 
   const handleUndoButton = () => {
     dispatch(hideModal());
-    history.push(`${match.url}/${product.id}`);
+    history.push(match.url);
   }
 
   const handleSubmit = (event) => {
@@ -115,6 +115,7 @@ export function Form() {
 
       dispatch(updateProduct(addedComment));
       dispatch(hideModal());
+      setComment('');
       toast.success("You have successfully added your comment");
 
       return;

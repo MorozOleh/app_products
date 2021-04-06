@@ -3,7 +3,7 @@ import { useStyles } from './CommentStyle';
 import { useDispatch, useSelector} from 'react-redux';
 import { showModal } from '../../redux/actions/actionCreator';
 import { Link } from 'react-router-dom';
-import { getProducts } from '../../redux/selectors/selectors';
+import { getProduct } from '../../redux/selectors/selectors';
 import { updateProduct } from '../../redux/actions/actionCreator';
 
 import Card from '@material-ui/core/Card';
@@ -11,10 +11,10 @@ import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-export function Comment({match, comments, id}) {
+export function Comment({match, comments}) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const product = useSelector(getProducts)[0];
+  const product = useSelector(getProduct);
 
   const handleDelete = (id) => {
     const deleteComment = {
@@ -29,7 +29,7 @@ export function Comment({match, comments, id}) {
 
   return (
     <>
-      <div className={classes.comments}>
+        <div className={classes.comments}>
         <Card >
           {comments.map(comment => (
             <CardContent key={comment.id}>
@@ -58,7 +58,7 @@ export function Comment({match, comments, id}) {
           variant="contained"
           color="secondary"
           component={Link}
-          to={`${match.url}/${id}?_edit=comment`}
+          to={`${match}?_edit=comment`}
           onClick={() => dispatch(showModal())}
         >
           Add comments

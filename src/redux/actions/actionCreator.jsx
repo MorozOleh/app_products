@@ -1,5 +1,6 @@
 import {
   FETCH_PRODUCTS,
+  FETCH_PRODUCT,
   GET_PRODUCT,
   SHOW_LOADING,
   HIDE_LOADING,
@@ -7,7 +8,7 @@ import {
   SHOW_MODAL,
   FIND_PRODUCTS
 } from '../types';
-import { putProduct, requestProducts } from '../../API/api';
+import { putProduct, requestProducts, requestProduct } from '../../API/api';
 
 export const fetchProducts = () => {
   return async dispatch => {
@@ -16,6 +17,19 @@ export const fetchProducts = () => {
 
     dispatch({
       type: FETCH_PRODUCTS,
+      payload: response
+    });
+    dispatch({ type: HIDE_LOADING });
+  }
+};
+
+export const fetchProduct = (id) => {
+  return async dispatch => {
+    dispatch({ type: SHOW_LOADING });
+    const response = await requestProduct(id);
+
+    dispatch({
+      type: FETCH_PRODUCT,
       payload: response
     });
     dispatch({ type: HIDE_LOADING });
@@ -42,18 +56,12 @@ export const updateProduct = (data) => {
 
     await putProduct(id, data);
 
-    const response = await requestProducts();
+    const response = await requestProduct(id);
 
-    dispatch({
-      type: FETCH_PRODUCTS,
+   dispatch({
+      type: FETCH_PRODUCT,
       payload: response
     });
-
-    dispatch({
-      type: GET_PRODUCT,
-      payload: id
-    });
-
     dispatch({ type: HIDE_LOADING });
   }
 };
